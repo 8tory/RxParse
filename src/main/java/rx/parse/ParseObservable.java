@@ -153,12 +153,16 @@ public class ParseObservable<T extends ParseObject> {
 
     public static <R extends ParseObject> Observable<R> get(Class<R> clazz, String objectId) {
         ParseQuery<R> query = ParseQuery.getQuery(clazz);
-        return toObservable(query.getInBackground(objectId))
-            .doOnUnsubscribe(() -> Observable.just(query)
+        return toObservable(query.getInBackground(objectId));
+		// If this part of the chain is removed then the query starts working
+		// else it only responds with ParseException, code 101, OBJECT_NOT_FOUND
+		// Why is this part of the code neccesary? If it is neccesary then please guide me
+		// as to how to get this working.
+            /*.doOnUnsubscribe(() -> Observable.just(query)
                 .doOnNext(q -> q.cancel())
                 .timeout(1, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
-                .subscribe(o -> {}, e -> {}));
+                .subscribe(o -> {}, e -> {})); */
     }
 
     @Deprecated

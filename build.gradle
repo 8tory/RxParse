@@ -52,9 +52,9 @@ android {
 
 dependencies {
     compile 'io.reactivex:rxjava:1.0.7'
-    compile 'com.infstory:parse:1.8.1'
+    //compile 'com.infstory:parse:1.8.1'
     //compile 'com.facebook.android:facebook-android-sdk:3.20.0'
-    compile 'com.parse.bolts:bolts-android:1.1.4'
+    //compile 'com.parse.bolts:bolts-android:1.1.4'
     //testCompile "org.mockito:mockito-core:1.+"
 }
 
